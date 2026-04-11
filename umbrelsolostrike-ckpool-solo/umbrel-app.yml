@@ -1,8 +1,10 @@
 manifestVersion: 1
 id: umbrelsolostrike-ckpool-solo
+category: bitcoin
 name: CKPool Solo
 version: "1.0.0"
 tagline: Self-sovereign Bitcoin solo mining powered by CKPool
+icon: https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/icon.jpg
 description: >-
   Run your own solo Bitcoin mining pool on your Umbrel node, powered by CKPool
   — the same battle-tested software behind solo.ckpool.org, written by Con Kolivas.
