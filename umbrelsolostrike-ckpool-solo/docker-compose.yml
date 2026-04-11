@@ -17,7 +17,7 @@ services:
 
   # ── CKPool stratum server ────────────────────────────────────────────────────
   ckpool:
-    image: ghcr.io/YOUR_GITHUB_USERNAME/ckpool-solo-ckpool:latest
+    image: ghcr.io/umbrelsolostrike/ckpool-solo-ckpool:latest
     container_name: ckpool-solo_ckpool_1
     restart: unless-stopped
     environment:
@@ -45,7 +45,7 @@ services:
 
   # ── Web dashboard ────────────────────────────────────────────────────────────
   web:
-    image: ghcr.io/YOUR_GITHUB_USERNAME/ckpool-solo-ui:latest
+    image: ghcr.io/umbrelsolostrike/ckpool-solo-ui:latest
     container_name: ckpool-solo_web_1
     restart: unless-stopped
     environment:
