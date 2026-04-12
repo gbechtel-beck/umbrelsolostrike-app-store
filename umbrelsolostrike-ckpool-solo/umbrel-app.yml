@@ -11,6 +11,12 @@ description: >-
   Forked and packaged for Umbrel by Gil Bechtel at SoloStrike.io. Connect your
   ASICs, BitAxe, or Nerd Miners directly to your own Bitcoin node. No third-party
   pool, no fees, no KYC — just you and the Bitcoin network.
+
+
+  Features a live dashboard with real-time hashrate history, network difficulty
+  from your Bitcoin node, difficulty retarget countdown, pool network odds,
+  per-worker stats, and a built-in explanation of how solo mining shares and
+  luck work.
 developer: Gil Bechtel — SoloStrike.io
 website: https://solostrike.io
 dependencies:
@@ -20,5 +26,9 @@ support: https://github.com/gbechtel-beck/umbrelsolostrike-app-store/issues
 port: 4040
 path: ""
 defaultPassword: ""
+gallery:
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/gallery-1.jpg
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/gallery-2.jpg
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/gallery-3.jpg
 releaseNotes: >-
   Initial release of CKPool Solo for Umbrel by Gil Bechtel, SoloStrike.io.
