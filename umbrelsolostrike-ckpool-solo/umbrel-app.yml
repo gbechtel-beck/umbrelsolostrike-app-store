@@ -30,3 +30,22 @@ gallery:
   - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/1.png
 releaseNotes: >-
   Initial release of CKPool Solo for Umbrel by Gil Bechtel, SoloStrike.io.
+widgets:
+  - id: "stats"
+    type: "four-stats"
+    refresh: "30s"
+    endpoint: "umbrelsolostrike-ckpool-solo_widget_1:3001/widget"
+    link: ""
+    example:
+      type: "four-stats"
+      link: ""
+      items:
+        - title: "Pool HR"
+          text: "108"
+          subtext: "TH/s"
+        - title: "Workers"
+          text: "9"
+        - title: "Blocks Found"
+          text: "0"
+        - title: "Best Share"
+          text: "592.455M"
