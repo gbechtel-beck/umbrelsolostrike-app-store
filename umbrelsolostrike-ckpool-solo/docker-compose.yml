@@ -6,6 +6,7 @@ services:
       APP_PORT: 4040
   ckpool:
     image: ghcr.io/gbechtel-beck/ckpool-solo-ckpool:latest
+    entrypoint: ["/bin/bash", "-c", "rm -rf /ckpool/logs/ckpool.sock && /entrypoint.sh"]
     container_name: umbrelsolostrike-ckpool-solo_ckpool_1
     restart: on-failure
     environment:
