@@ -27,8 +27,8 @@ port: 4040
 path: ""
 defaultPassword: ""
 gallery:
-  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/gallery-1.jpg
-  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/gallery-2.jpg
-  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/gallery-3.jpg
+  - gallery-1.jpg
+  - gallery-2.jpg
+  - gallery-3.jpg
 releaseNotes: >-
   Initial release of CKPool Solo for Umbrel by Gil Bechtel, SoloStrike.io.
