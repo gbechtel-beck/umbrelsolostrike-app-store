@@ -1,12 +1,9 @@
 version: "3.7"
-
 services:
-
   app_proxy:
     environment:
       APP_HOST: umbrelsolostrike-ckpool-solo_web_1
       APP_PORT: 4040
-
   ckpool:
     image: ghcr.io/gbechtel-beck/ckpool-solo-ckpool:latest
     container_name: umbrelsolostrike-ckpool-solo_ckpool_1
@@ -26,7 +23,6 @@ services:
       - "${APP_DATA_DIR}/logs:/ckpool/logs"
     ports:
       - "3333:3333/tcp"
-
   web:
     image: ghcr.io/gbechtel-beck/ckpool-solo-ui:latest
     container_name: umbrelsolostrike-ckpool-solo_web_1
@@ -34,6 +30,10 @@ services:
     environment:
       CKPOOL_LOG_DIR: "/ckpool/logs"
       PORT: "4040"
+      BITCOIN_RPC_URL: "http://$APP_BITCOIN_NODE_IP"
+      BITCOIN_RPC_PORT: "$APP_BITCOIN_RPC_PORT"
+      BITCOIN_RPC_USER: "$APP_BITCOIN_RPC_USER"
+      BITCOIN_RPC_PASS: "$APP_BITCOIN_RPC_PASS"
     volumes:
       - "${APP_DATA_DIR}/logs:/ckpool/logs:ro"
     depends_on:
