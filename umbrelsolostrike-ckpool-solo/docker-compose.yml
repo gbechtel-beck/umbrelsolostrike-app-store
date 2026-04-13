@@ -1,4 +1,11 @@
+version: "3.7"
 services:
+  app_proxy:
+    environment:
+      APP_HOST: umbrelsolostrike-ckpool-solo_web_1
+      APP_PORT: 4040
+      PROXY_AUTH_ADD: "false"
+
   ckpool:
     image: ghcr.io/gbechtel-beck/ckpool-solo-ckpool:latest
     entrypoint: ["/bin/bash", "-c", "rm -rf /ckpool/logs/ckpool.sock && /entrypoint.sh"]
@@ -19,8 +26,6 @@ services:
       - "${APP_DATA_DIR}/logs:/ckpool/logs"
     ports:
       - "3334:3334/tcp"
-    networks:
-      - umbrel_main_network
 
   web:
     image: ghcr.io/gbechtel-beck/ckpool-solo-ui:latest
@@ -37,8 +42,6 @@ services:
       - "${APP_DATA_DIR}/logs:/ckpool/logs:ro"
     depends_on:
       - ckpool
-    networks:
-      - umbrel_main_network
 
   widget:
     image: node:18-alpine
@@ -49,9 +52,3 @@ services:
       - "${APP_DATA_DIR}/logs:/ckpool/logs:ro"
     depends_on:
       - ckpool
-    networks:
-      - umbrel_main_network
-
-networks:
-  umbrel_main_network:
-    external: true
