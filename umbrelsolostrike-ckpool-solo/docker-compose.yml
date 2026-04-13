@@ -1,9 +1,4 @@
-version: "3.7"
 services:
-  app_proxy:
-    environment:
-      APP_HOST: umbrelsolostrike-ckpool-solo_web_1
-      APP_PORT: 4040
   ckpool:
     image: ghcr.io/gbechtel-beck/ckpool-solo-ckpool:latest
     entrypoint: ["/bin/bash", "-c", "rm -rf /ckpool/logs/ckpool.sock && /entrypoint.sh"]
@@ -14,16 +9,19 @@ services:
       BITCOIN_RPC_PORT: "$APP_BITCOIN_RPC_PORT"
       BITCOIN_RPC_USER: "$APP_BITCOIN_RPC_USER"
       BITCOIN_RPC_PASS: "$APP_BITCOIN_RPC_PASS"
-      STRATUM_PORT: "3333"
+      STRATUM_PORT: "3334"
       POOL_SIG: "/SoloStrike.io/"
       POOL_FEE: "0"
-      MIN_DIFF: "1000"
-      START_DIFF: "1000"
+      MIN_DIFF: "65536"
+      START_DIFF: "65536"
       MAX_DIFF: "0"
     volumes:
       - "${APP_DATA_DIR}/logs:/ckpool/logs"
     ports:
-      - "3333:3333/tcp"
+      - "3334:3334/tcp"
+    networks:
+      - umbrel_main_network
+
   web:
     image: ghcr.io/gbechtel-beck/ckpool-solo-ui:latest
     container_name: umbrelsolostrike-ckpool-solo_web_1
@@ -39,13 +37,21 @@ services:
       - "${APP_DATA_DIR}/logs:/ckpool/logs:ro"
     depends_on:
       - ckpool
-widget:
+    networks:
+      - umbrel_main_network
+
+  widget:
     image: node:18-alpine
     container_name: umbrelsolostrike-ckpool-solo_widget_1
     restart: on-failure
-    command: >
-      sh -c "echo 'const http=require(\"http\"),fs=require(\"fs\");http.createServer((req,res)=>{if(req.url!==\"/widget\"){res.writeHead(404);res.end();return;}try{const lines=fs.readFileSync(\"/ckpool/logs/pool/pool.status\",\"utf8\").trim().split(\"\\n\");const runtime=JSON.parse(lines[0]);const hashrate=JSON.parse(lines[1]);const diff=JSON.parse(lines[2]);const hr=hashrate.hashrate1m||\"—\";const workers=runtime.Workers||0;const best=diff.bestshare||0;const bestFmt=best>=1e9?(best/1e9).toFixed(3)+\"B\":best>=1e6?(best/1e6).toFixed(3)+\"M\":best>=1e3?(best/1e3).toFixed(1)+\"K\":String(best);const data={type:\"four-stats\",link:\"\",items:[{title:\"Pool HR\",text:hr.replace(/[A-Za-z\\/s]+$/,\"\"),subtext:hr.replace(/^[0-9.]+/,\"\")},{title:\"Workers\",text:String(workers)},{title:\"Blocks Found\",text:\"0\"},{title:\"Best Share\",text:bestFmt}]};res.writeHead(200,{\"Content-Type\":\"application/json\"});res.end(JSON.stringify(data));}catch(e){res.writeHead(500);res.end(JSON.stringify({error:e.message}));}}).listen(3001,()=>console.log(\"Widget on 3001\"));' > /app.js && node /app.js"
+    command: ["sh", "-c", "node -e \"const http=require('http'),fs=require('fs');http.createServer((req,res)=>{if(req.url!=='/widget'){res.writeHead(404);res.end();return;}try{const lines=fs.readFileSync('/ckpool/logs/pool/pool.status','utf8').trim().split('\\n');const runtime=JSON.parse(lines[0]);const hashrate=JSON.parse(lines[1]);const diff=JSON.parse(lines[2]);const hr=hashrate.hashrate1m||'--';const workers=runtime.Workers||0;const best=diff.bestshare||0;const bestFmt=best>=1e9?(best/1e9).toFixed(3)+'B':best>=1e6?(best/1e6).toFixed(3)+'M':best>=1e3?(best/1e3).toFixed(1)+'K':String(best);const data={type:'four-stats',link:'',items:[{title:'Pool HR',text:hr.replace(/[A-Za-z]+$/,''),subtext:hr.replace(/^[0-9.]+/,'')},{title:'Workers',text:String(workers)},{title:'Blocks Found',text:'0'},{title:'Best Share',text:bestFmt}]};res.writeHead(200,{'Content-Type':'application/json'});res.end(JSON.stringify(data));}catch(e){res.writeHead(500);res.end(JSON.stringify({error:e.message}));}}).listen(3001,()=>console.log('Widget on 3001'));\""]
     volumes:
       - "${APP_DATA_DIR}/logs:/ckpool/logs:ro"
     depends_on:
       - ckpool
+    networks:
+      - umbrel_main_network
+
+networks:
+  umbrel_main_network:
+    external: true
