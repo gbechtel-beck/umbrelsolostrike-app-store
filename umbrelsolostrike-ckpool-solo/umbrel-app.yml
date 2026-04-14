@@ -34,7 +34,7 @@ widgets:
   - id: "stats"
     type: "four-stats"
     refresh: "30s"
-    endpoint: "umbrelsolostrike-ckpool-solo_widget_1:3001/widget"
+    endpoint: "widget:3001/widget"
     link: ""
     example:
       type: "four-stats"
