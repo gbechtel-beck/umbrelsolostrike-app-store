@@ -7,7 +7,7 @@ services:
       PROXY_AUTH_ADD: "false"
 
   ckpool:
-    image: ghcr.io/gbechtel-beck/ckpool-solo-ckpool:latest
+    image: ghcr.io/gbechtel-beck/ckpool-solo-ckpool:main
     entrypoint: ["/bin/bash", "-c", "rm -rf /ckpool/logs/ckpool.sock && /entrypoint.sh"]
     container_name: umbrelsolostrike-ckpool-solo_ckpool_1
     restart: on-failure
@@ -28,7 +28,7 @@ services:
       - "3334:3334/tcp"
 
   web:
-    image: ghcr.io/gbechtel-beck/ckpool-solo-ui:latest
+    image: ghcr.io/gbechtel-beck/ckpool-solo-ui:main
     container_name: umbrelsolostrike-ckpool-solo_web_1
     restart: on-failure
     environment:
