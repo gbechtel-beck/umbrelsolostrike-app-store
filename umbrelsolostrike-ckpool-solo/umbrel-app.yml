@@ -2,7 +2,7 @@ manifestVersion: 1
 id: umbrelsolostrike-ckpool-solo
 category: bitcoin
 name: CKPool Solo
-version: "1.0.0"
+version: "1.0.1"
 tagline: Host your own solo Bitcoin mining pool — keep the full block reward
 icon: https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/icon.jpg
 description: >-
@@ -44,11 +44,13 @@ defaultPassword: ""
 gallery:
   - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/1.png
 releaseNotes: >-
-  v1.0.0 — Major dashboard rewrite. New solo-first landing layout with one-click
-  stratum endpoint copy. Per-worker drift indicator (actual share interval ÷
-  expected interval at fixed pool difficulty) with hover tooltips explaining
-  the math. "1 in N" format for tiny solo-mining probabilities (replaces
-  scientific notation). Address Hashrate Trend chart now full width above
-  Worker Detail. Particle network background restored. Footer attribution
-  corrected to CKPool by Con Kolivas (GPLv3). Stable threshold tuned to 5
-  minutes to absorb Poisson variance in Bitaxe-class share intervals.
+  v1.0.1 — Two stability fixes. (1) Pool hashrate chart was recording 0 for
+  every sample because the pool.status NDJSON file (multi-line JSON) was
+  parsed as a single JSON object and silently failed. The chart now correctly
+  records and displays real-time pool hashrate. (2) Dashboard appeared frozen
+  unless manually refreshed because Promise.all on four data sources rejected
+  whenever one (coincap.io) was blocked by Umbrel network isolation, killing
+  the auto-refresh cycle. Now uses Promise.allSettled so individual failed
+  sources don't break the others, plus a defense-in-depth wrapper around
+  the setInterval bootstrap. Both Pool Hashrate chart and Hashrate Stability
+  chart will populate over the next 24 hours of new samples.
