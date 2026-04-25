@@ -2,7 +2,7 @@ manifestVersion: 1
 id: umbrelsolostrike-ckpool-solo
 category: bitcoin
 name: CKPool Solo
-version: "1.0.1"
+version: "1.0.2"
 tagline: Host your own solo Bitcoin mining pool — keep the full block reward
 icon: https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/icon.jpg
 description: >-
@@ -44,13 +44,8 @@ defaultPassword: ""
 gallery:
   - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/1.png
 releaseNotes: >-
-  v1.0.1 — Two stability fixes. (1) Pool hashrate chart was recording 0 for
-  every sample because the pool.status NDJSON file (multi-line JSON) was
-  parsed as a single JSON object and silently failed. The chart now correctly
-  records and displays real-time pool hashrate. (2) Dashboard appeared frozen
-  unless manually refreshed because Promise.all on four data sources rejected
-  whenever one (coincap.io) was blocked by Umbrel network isolation, killing
-  the auto-refresh cycle. Now uses Promise.allSettled so individual failed
-  sources don't break the others, plus a defense-in-depth wrapper around
-  the setInterval bootstrap. Both Pool Hashrate chart and Hashrate Stability
-  chart will populate over the next 24 hours of new samples.
+  v1.0.2 — Worker panel auto-refresh. Previously the per-worker cards,
+  COMBINED HASHRATE, and AVG LAST SHARE only updated when you pressed Load
+  Workers. The whole dashboard now ticks every 60 seconds: pool stats,
+  worker panel, charts, and last-share timers all refresh together on the
+  same cadence with proper error isolation between sources.
