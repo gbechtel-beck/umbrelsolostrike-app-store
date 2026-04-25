@@ -17,8 +17,8 @@ services:
       STRATUM_PORT: "3333"
       POOL_SIG: "/SoloStrike.io/"
       POOL_FEE: "0"
-      MIN_DIFF: "1000"
-      START_DIFF: "1000"
+      MIN_DIFF: "1"
+      START_DIFF: "42"
       MAX_DIFF: "0"
     volumes:
       - "${APP_DATA_DIR}/logs:/ckpool/logs"

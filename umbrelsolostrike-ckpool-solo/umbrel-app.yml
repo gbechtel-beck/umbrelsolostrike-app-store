@@ -3,20 +3,35 @@ id: umbrelsolostrike-ckpool-solo
 category: bitcoin
 name: CKPool Solo
 version: "1.0.0"
-tagline: Self-sovereign Bitcoin solo mining powered by CKPool
+tagline: Host your own solo Bitcoin mining pool — keep the full block reward
 icon: https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/icon.jpg
 description: >-
-  Run your own solo Bitcoin mining pool on your Umbrel node, powered by CKPool
-  — the same battle-tested software behind solo.ckpool.org, written by Con Kolivas.
-  Forked and packaged for Umbrel by Gil Bechtel at SoloStrike.io. Connect your
-  ASICs, BitAxe, or Nerd Miners directly to your own Bitcoin node. No third-party
-  pool, no fees, no KYC — just you and the Bitcoin network.
+  CKPool Solo turns your Umbrel into a sovereign Bitcoin mining pool. Install it,
+  point your miners at it, and any block your hardware solves pays the full
+  3.125 BTC reward directly to your address — no pool fees, no withholding, no
+  middleman. Your block templates are built locally from your own Bitcoin node,
+  validated against your own chain, and broadcast directly to the network.
 
 
-  Features a live dashboard with real-time hashrate history, network difficulty
-  from your Bitcoin node, difficulty retarget countdown, pool network odds,
-  per-worker stats, and a built-in explanation of how solo mining shares and
-  luck work.
+  Designed for home miners running Bitaxe, NerdQaxe, BitForge, Antminer, Avalon,
+  or any SHA-256 ASIC that speaks stratum. The bundled web dashboard shows live
+  pool hashrate, per-worker health (last share, drift vs expected interval,
+  best difficulty per session), block history, network odds, and a 24-hour
+  hashrate chart. Fixed difficulty 4096 keeps share submissions frequent so
+  small Bitaxe-class miners can see real activity from minute one.
+
+
+  Solo mining is a lottery — you may never solve a block. But when you do, it
+  goes from your node straight to the network with zero intermediaries. Recent
+  proof: in October 2025 a 130 TH/s home setup found Bitcoin block 920,440 and
+  collected 3.15 BTC (~$342,000) using this exact stack. In November 2025 a
+  6-Bitaxe cluster (combined 6.6 TH/s, hardware under $800) found block 924,569.
+  The next solver could be running on your shelf.
+
+
+  Powered by CKPool by Con Kolivas (GPLv3) — the same software behind
+  solo.ckpool.org, which has found over 313 solo blocks since 2014. Forked,
+  packaged, and maintained for Umbrel by Gil Bechtel at SoloStrike.io.
 developer: Gil Bechtel — SoloStrike.io
 website: https://solostrike.io
 dependencies:
@@ -29,4 +44,11 @@ defaultPassword: ""
 gallery:
   - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-ckpool-solo/1.png
 releaseNotes: >-
-  Initial release of CKPool Solo for Umbrel by Gil Bechtel, SoloStrike.io.
+  v1.0.0 — Major dashboard rewrite. New solo-first landing layout with one-click
+  stratum endpoint copy. Per-worker drift indicator (actual share interval ÷
+  expected interval at fixed pool difficulty) with hover tooltips explaining
+  the math. "1 in N" format for tiny solo-mining probabilities (replaces
+  scientific notation). Address Hashrate Trend chart now full width above
+  Worker Detail. Particle network background restored. Footer attribution
+  corrected to CKPool by Con Kolivas (GPLv3). Stable threshold tuned to 5
+  minutes to absorb Poisson variance in Bitaxe-class share intervals.
