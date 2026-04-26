@@ -1,0 +1,60 @@
+manifestVersion: 1
+id: umbrelsolostrike-fleetswarm
+category: bitcoin
+name: FleetSwarm
+version: "0.1.0"
+tagline: Health dashboard for mixed Bitcoin ASIC fleets
+description: >-
+  FleetSwarm is a self-hosted health dashboard for mixed Bitcoin SHA-256 ASIC
+  fleets. One pane of glass for Bitaxe, BitForge, Avalon Q, and Nerd Miner
+  devices — no matter which firmware they run.
+
+
+  ✦ Speaks three protocols natively: AxeOS REST (Bitaxe / BitForge / Nerd
+  Miner), CGMiner TCP on port 4028 (Avalon Q and other CGMiner-compatible
+  ASICs), and Public Pool / SoloStrike HTTP API for pool-side cross-reference.
+
+
+  ✦ Auto-discovers your LAN — every poll cycle sweeps a /24 subnet for new
+  miners. Plug a new BitForge in, it shows up in 30 seconds.
+
+
+  ✦ Fleet health roll-up at a glance. The header pill flips green / orange /
+  red based on configurable thresholds for temperature, reject rate, and
+  offline duration.
+
+
+  ✦ Per-miner hashrate, temperature, fan speed, accepted/rejected shares,
+  power draw, and best difficulty. Color-coded by class (BitForge, Bitaxe,
+  Avalon, Nerd) so the four tiers are instantly distinguishable.
+
+
+  ✦ 14-day rolling history in SQLite. Time-series API endpoint exposed
+  for future charting and alerting integrations.
+
+
+  ✦ Industrial terminal aesthetic — dense, glanceable, no decorative cruft.
+  Built to be the always-on monitor on your desk or wall.
+
+
+  ✦ Universal — no utility-specific assumptions baked in. Works the same
+  whether you're in Arizona, Texas, Vienna, or anywhere else.
+
+releaseNotes: >-
+  Initial release. AxeOS REST and CGMiner TCP polling, subnet auto-discovery,
+  configurable health thresholds, persistent history, mixed-fleet UI.
+developer: Gil Bechtel
+website: https://solostrike.io
+dependencies: []
+repo: https://github.com/gbechtel-beck/fleetswarm
+support: https://github.com/gbechtel-beck/fleetswarm/issues
+port: 8888
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+submitter: Gil Bechtel · SoloStrike.io
+submission: https://github.com/gbechtel-beck/umbrelsolostrike-app-store

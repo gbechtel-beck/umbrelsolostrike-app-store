@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0d10"/>
+      <stop offset="1" stop-color="#1a2128"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffb000" stop-opacity="0.35"/>
+      <stop offset="0.6" stop-color="#ffb000" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#ffb000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect width="1024" height="1024" rx="200" ry="200" fill="url(#bg)"/>
+
+  <!-- Subtle ambient glow behind the swarm -->
+  <ellipse cx="512" cy="512" rx="380" ry="380" fill="url(#glow)"/>
+
+  <!-- Grid pattern (subtle terminal vibe) -->
+  <g opacity="0.06" stroke="#ffb000" stroke-width="1" fill="none">
+    <line x1="0" y1="256" x2="1024" y2="256"/>
+    <line x1="0" y1="512" x2="1024" y2="512"/>
+    <line x1="0" y1="768" x2="1024" y2="768"/>
+    <line x1="256" y1="0" x2="256" y2="1024"/>
+    <line x1="512" y1="0" x2="512" y2="1024"/>
+    <line x1="768" y1="0" x2="768" y2="1024"/>
+  </g>
+
+  <!-- The swarm: 7 nodes arranged in hexagonal cluster -->
+  <!-- Connecting lines first (so they sit behind nodes) -->
+  <g stroke="#ffb000" stroke-width="3" stroke-opacity="0.35" fill="none" stroke-linecap="round">
+    <line x1="512" y1="512" x2="512" y2="282"/>
+    <line x1="512" y1="512" x2="710" y2="397"/>
+    <line x1="512" y1="512" x2="710" y2="627"/>
+    <line x1="512" y1="512" x2="512" y2="742"/>
+    <line x1="512" y1="512" x2="314" y2="627"/>
+    <line x1="512" y1="512" x2="314" y2="397"/>
+  </g>
+
+  <!-- Outer nodes (smaller, the "fleet") -->
+  <g>
+    <circle cx="512" cy="282" r="42" fill="#161c23" stroke="#ffb000" stroke-width="6"/>
+    <circle cx="710" cy="397" r="42" fill="#161c23" stroke="#67e8f9" stroke-width="6"/>
+    <circle cx="710" cy="627" r="42" fill="#161c23" stroke="#60a5fa" stroke-width="6"/>
+    <circle cx="512" cy="742" r="42" fill="#161c23" stroke="#e879f9" stroke-width="6"/>
+    <circle cx="314" cy="627" r="42" fill="#161c23" stroke="#ffb000" stroke-width="6"/>
+    <circle cx="314" cy="397" r="42" fill="#161c23" stroke="#67e8f9" stroke-width="6"/>
+  </g>
+
+  <!-- Pulse rings around outer nodes -->
+  <g opacity="0.4" fill="none" stroke-width="2">
+    <circle cx="512" cy="282" r="58" stroke="#ffb000"/>
+    <circle cx="710" cy="397" r="58" stroke="#67e8f9"/>
+    <circle cx="314" cy="627" r="58" stroke="#ffb000"/>
+  </g>
+
+  <!-- Center hub: hashrate symbol — big diamond (the controller) -->
+  <g>
+    <!-- Outer hex frame -->
+    <polygon points="512,392 612,452 612,572 512,632 412,572 412,452"
+             fill="#0f1419" stroke="#ffb000" stroke-width="8"/>
+    <!-- Inner ◆ mark, matches the FLEET brand -->
+    <polygon points="512,442 562,512 512,582 462,512"
+             fill="#ffb000" filter="url(#softglow)"/>
+    <polygon points="512,442 562,512 512,582 462,512" fill="#ffb000"/>
+  </g>
+
+  <!-- Tick marks at corners (hash blocks vibe) -->
+  <g fill="#ffb000" opacity="0.6">
+    <rect x="180" y="180" width="40" height="6"/>
+    <rect x="180" y="180" width="6" height="40"/>
+    <rect x="804" y="180" width="40" height="6"/>
+    <rect x="838" y="180" width="6" height="40"/>
+    <rect x="180" y="838" width="40" height="6"/>
+    <rect x="180" y="804" width="6" height="40"/>
+    <rect x="804" y="838" width="40" height="6"/>
+    <rect x="838" y="804" width="6" height="40"/>
+  </g>
+</svg>
