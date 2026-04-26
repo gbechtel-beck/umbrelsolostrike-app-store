@@ -2,9 +2,8 @@ manifestVersion: 1
 id: umbrelsolostrike-fleetswarm
 category: bitcoin
 name: FleetSwarm
-version: "0.2.1"
+version: "0.2.2"
 tagline: Health dashboard for mixed Bitcoin ASIC fleets
-icon: https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-fleetswarm/icon.svg
 description: >-
   FleetSwarm is a self-hosted health dashboard for mixed Bitcoin SHA-256 ASIC
   fleets. One pane of glass for Bitaxe, BitForge, Avalon Q, and Nerd Miner
@@ -42,24 +41,33 @@ description: >-
   whether you're in Arizona, Texas, Vienna, or anywhere else.
 
 releaseNotes: >-
-  ✦ Pool Workers panel — the dashboard now displays a live cross-reference
-  panel at the bottom showing all enabled pools (Public Pool / SoloStrike,
-  AxeBCH2, unMineable) with their per-worker hashrate and best difficulty.
+  ✦ Avalon Q best-share tracking — Avalons running CGMiner now expose their
+  session-best difficulty in the dashboard, just like AxeOS-style miners.
+  Reads "Best Share" from the CGMiner summary command.
 
 
-  ✦ URL encoding fix — pool addresses with colons (BCH addresses like
-  `bitcoincash:qrr...`, Kaspa addresses like `kaspa:qz...`) are now correctly
-  encoded before being passed to pool API endpoints. Without this fix, the
-  AxeBCH2 and unMineable integrations would silently return no data.
+  ✦ AxeBCH2 integration finally works — replaced the legacy Public-Pool-style
+  fetcher with a new one that hits AxeBCH2's actual /api/pool/workers
+  endpoint. Pool 2 now populates with real worker data, including hashrate
+  (auto-converted to TH/s when ≥ 1000 GH/s) and best-ever difficulty.
 
 
-  ✦ Pool fetcher logging — the poller now logs HTTP errors and empty
-  responses to the container log, making it easier to debug pool API
-  configuration issues. Tail with `docker logs umbrelsolostrike-fleetswarm_web_1`.
+  ✦ Card layout: status side-column — the dead space next to each miner's
+  hashrate now shows uptime and pool host. Cards are slightly more compact
+  too, so more miners fit on screen.
 
 
-  ✦ unMineable hashrate display — coin-native units (e.g. "110.5 KAS")
-  instead of being misinterpreted as GH/s.
+  ✦ Reject row now shows count + percent — e.g. "REJ 4 · 0.12%" instead of
+  just the raw count, with color escalating from white → orange → red as
+  the percent crosses your per-class threshold.
+
+
+  ✦ Dashboard favicon — the bright orange hex icon now appears in browser
+  tabs and bookmarks.
+
+
+  ✦ Footer attribution — built by Gil Bechtel · SoloStrike.io. Click the
+  name to jump to the GitHub repo.
 developer: Gil Bechtel
 website: https://solostrike.io
 dependencies: []
@@ -67,9 +75,9 @@ repo: https://github.com/gbechtel-beck/fleetswarm
 support: https://github.com/gbechtel-beck/fleetswarm/issues
 port: 8888
 gallery:
-  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-fleetswarm/1.jpg
-  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-fleetswarm/2.jpg
-  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-fleetswarm/3.jpg
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
 path: ""
 defaultUsername: ""
 defaultPassword: ""
