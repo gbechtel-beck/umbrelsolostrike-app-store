@@ -2,7 +2,7 @@ manifestVersion: 1
 id: umbrelsolostrike-fleetswarm
 category: bitcoin
 name: FleetSwarm
-version: "0.2.0"
+version: "0.2.1"
 tagline: Health dashboard for mixed Bitcoin ASIC fleets
 description: >-
   FleetSwarm is a self-hosted health dashboard for mixed Bitcoin SHA-256 ASIC
@@ -41,25 +41,24 @@ description: >-
   whether you're in Arizona, Texas, Vienna, or anywhere else.
 
 releaseNotes: >-
-  ✦ Per-class alert thresholds — separate temp/reject/grace settings for
-  BitForge, Bitaxe, Avalon Q, and Nerd Miner classes. Avalon defaults now
-  match Canaan's spec (90°C warn, 100°C critical) so healthy Avalons stop
-  triggering false alerts.
+  ✦ Pool Workers panel — the dashboard now displays a live cross-reference
+  panel at the bottom showing all enabled pools (Public Pool / SoloStrike,
+  AxeBCH2, unMineable) with their per-worker hashrate and best difficulty.
 
 
-  ✦ Three pool cross-references — Public Pool / SoloStrike / CKPool,
-  AxeBCH2 dev pool, and unMineable. Configure independently, see worker
-  status across all your pools at a glance.
+  ✦ URL encoding fix — pool addresses with colons (BCH addresses like
+  `bitcoincash:qrr...`, Kaspa addresses like `kaspa:qz...`) are now correctly
+  encoded before being passed to pool API endpoints. Without this fix, the
+  AxeBCH2 and unMineable integrations would silently return no data.
 
 
-  ✦ Bug fixes: Avalon hostname now falls back to "Avalon-<last-octet>" when
-  the worker name looks like a wallet address. Bitaxe fan readings are
-  rounded to integers (no more "44.8386421%"). Best Difficulty values
-  abbreviated with SI units (39.4M, 2.14B) instead of raw integers.
+  ✦ Pool fetcher logging — the poller now logs HTTP errors and empty
+  responses to the container log, making it easier to debug pool API
+  configuration issues. Tail with `docker logs umbrelsolostrike-fleetswarm_web_1`.
 
 
-  ✦ Migration: existing v0.1 configs are auto-migrated on first launch.
-  Your custom thresholds are preserved across all four classes.
+  ✦ unMineable hashrate display — coin-native units (e.g. "110.5 KAS")
+  instead of being misinterpreted as GH/s.
 developer: Gil Bechtel
 website: https://solostrike.io
 dependencies: []
