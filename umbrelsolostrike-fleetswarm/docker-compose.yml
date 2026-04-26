@@ -15,8 +15,8 @@ services:
   web:
     # IMPORTANT: when publishing to the store, replace `:latest` with a
     # version tag pinned by sha256 digest, e.g.:
-    #   image: ghcr.io/gbechtel-beck/fleetswarm:0.1.0@sha256:<digest>
-    image: ghcr.io/gbechtel-beck/fleetswarm:0.1.0@sha256:440967554e2c9e717a5b53fbbb93088fddd6771c3f16eaf183ad7717bd34b8d0
+    #   image: ghcr.io/gbechtel-beck/fleetswarm:0.2.0@sha256:<digest>
+    image: ghcr.io/gbechtel-beck/fleetswarm:0.2.0@sha256:1179ecf42f1121686bd65c35cdcec44c612abcf05d3b7c626d95102e459624f1
     restart: on-failure
     stop_grace_period: 1m
     volumes:

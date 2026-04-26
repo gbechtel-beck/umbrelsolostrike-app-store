@@ -2,7 +2,7 @@ manifestVersion: 1
 id: umbrelsolostrike-fleetswarm
 category: bitcoin
 name: FleetSwarm
-version: "0.1.0"
+version: "0.2.0"
 tagline: Health dashboard for mixed Bitcoin ASIC fleets
 description: >-
   FleetSwarm is a self-hosted health dashboard for mixed Bitcoin SHA-256 ASIC
@@ -41,8 +41,25 @@ description: >-
   whether you're in Arizona, Texas, Vienna, or anywhere else.
 
 releaseNotes: >-
-  Initial release. AxeOS REST and CGMiner TCP polling, subnet auto-discovery,
-  configurable health thresholds, persistent history, mixed-fleet UI.
+  ✦ Per-class alert thresholds — separate temp/reject/grace settings for
+  BitForge, Bitaxe, Avalon Q, and Nerd Miner classes. Avalon defaults now
+  match Canaan's spec (90°C warn, 100°C critical) so healthy Avalons stop
+  triggering false alerts.
+
+
+  ✦ Three pool cross-references — Public Pool / SoloStrike / CKPool,
+  AxeBCH2 dev pool, and unMineable. Configure independently, see worker
+  status across all your pools at a glance.
+
+
+  ✦ Bug fixes: Avalon hostname now falls back to "Avalon-<last-octet>" when
+  the worker name looks like a wallet address. Bitaxe fan readings are
+  rounded to integers (no more "44.8386421%"). Best Difficulty values
+  abbreviated with SI units (39.4M, 2.14B) instead of raw integers.
+
+
+  ✦ Migration: existing v0.1 configs are auto-migrated on first launch.
+  Your custom thresholds are preserved across all four classes.
 developer: Gil Bechtel
 website: https://solostrike.io
 dependencies: []
