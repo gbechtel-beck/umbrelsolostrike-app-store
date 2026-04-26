@@ -4,6 +4,7 @@ category: bitcoin
 name: FleetSwarm
 version: "0.2.1"
 tagline: Health dashboard for mixed Bitcoin ASIC fleets
+icon: https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-fleetswarm/icon.svg
 description: >-
   FleetSwarm is a self-hosted health dashboard for mixed Bitcoin SHA-256 ASIC
   fleets. One pane of glass for Bitaxe, BitForge, Avalon Q, and Nerd Miner
@@ -66,9 +67,9 @@ repo: https://github.com/gbechtel-beck/fleetswarm
 support: https://github.com/gbechtel-beck/fleetswarm/issues
 port: 8888
 gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-fleetswarm/1.jpg
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-fleetswarm/2.jpg
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-fleetswarm/3.jpg
 path: ""
 defaultUsername: ""
 defaultPassword: ""
