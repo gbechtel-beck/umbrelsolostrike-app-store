@@ -4,7 +4,7 @@ name: Avalon Q Controller
 tagline: Schedule, monitor, and rotate pools across a fleet of Avalon Q miners
 category: bitcoin
 icon: https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/icon.png
-version: "2.0.3"
+version: "2.0.4"
 port: 8118
 description: |-
   A self-hosted controller and scheduler for Canaan Avalon Q home Bitcoin
