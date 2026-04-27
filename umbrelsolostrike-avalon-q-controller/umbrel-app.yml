@@ -6,7 +6,7 @@ category: bitcoin
 icon: https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/icon.png
 version: "2.0.3"
 port: 8118
-description: >-
+description: |-
   A self-hosted controller and scheduler for Canaan Avalon Q home Bitcoin
   miners. Works just as well with a single miner as it does with a fleet —
   if you only have one Avalon Q, you still get the dashboard, history,
@@ -82,7 +82,7 @@ description: >-
   This app does not depend on Bitcoin Core or any other Umbrel app. Any
   stratum pool reachable from your Umbrel will work, including pools
   hosted by your other Umbrel apps (CKpool Solo, public pool, etc.).
-releaseNotes: >-
+releaseNotes: |-
   v2.0.3 — adds favicon, cache-busting on static assets so future updates
   refresh cleanly, and packs the gallery and store icon. Also includes
   the v2.0.2 fixes: STATE-based standby detection (UI now correctly shows
