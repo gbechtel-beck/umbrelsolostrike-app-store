@@ -3,6 +3,7 @@ id: umbrelsolostrike-avalon-q-controller
 name: Avalon Q Controller
 tagline: Schedule, monitor, and rotate pools across a fleet of Avalon Q miners
 category: bitcoin
+icon: https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/icon.svg
 version: "2.0.2"
 port: 8118
 description: >-
@@ -47,9 +48,12 @@ submission: https://github.com/gbechtel-beck/umbrelsolostrike-app-store
 repo: https://github.com/gbechtel-beck/avalon-q-controller
 support: https://github.com/gbechtel-beck/avalon-q-controller/issues
 gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/1.jpg
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/2.jpg
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/3.jpg
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/1.jpg
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/2.jpg
+  - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/3.jpg
 releaseNotes: >-
   v2.0 — multi-miner support, pool library, pool-rotation scheduling,
   24-hour history charts, LAN discovery, full SQLite persistence.
