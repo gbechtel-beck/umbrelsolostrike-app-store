@@ -103,6 +103,3 @@ gallery:
   - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/1.jpg
   - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/2.jpg
   - https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store/main/umbrelsolostrike-avalon-q-controller/3.jpg
-releaseNotes: >-
-  v2.0 — multi-miner support, pool library, pool-rotation scheduling,
-  24-hour history charts, LAN discovery, full SQLite persistence.
