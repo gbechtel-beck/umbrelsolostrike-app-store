@@ -7,40 +7,89 @@ icon: https://raw.githubusercontent.com/gbechtel-beck/umbrelsolostrike-app-store
 version: "2.0.2"
 port: 8118
 description: >-
-  A self-hosted controller and scheduler for one or more Canaan Avalon Q home
-  Bitcoin miners. Talks directly to each miner's CGMiner-compatible API on
-  port 4028. No cloud, no telemetry — your credentials, schedules, and
-  metrics history live only on your Umbrel.
+  A self-hosted controller and scheduler for Canaan Avalon Q home Bitcoin
+  miners. Works just as well with a single miner as it does with a fleet —
+  if you only have one Avalon Q, you still get the dashboard, history,
+  scheduler, and pool library; the multi-miner support is there when you
+  grow into it.
 
-  What it does
-  ------------
-  • Manage a fleet of Avalon Q miners from one dashboard.
-  • Auto-discover miners on your LAN with the built-in scanner, or add by
-    IP manually.
-  • Real-time per-miner status: workmode, hashrate, power draw, J/TH
-    efficiency, chip temps, fan, shares, active pool.
-  • 24-hour history charts for hashrate, power, temperature, and workmode,
-    sampled every poll cycle and stored in SQLite.
-  • Pool library: define stratum pools per miner with worker and password,
-    and apply them with one click (with or without auto-reboot).
-  • Pool-rotation scheduler: rules can switch the active pool, change
-    workmode, soft-off, or soft-on. Each rule is a
-    (days × time-window × season) → action mapping with priority ordering.
-    Time windows can wrap past midnight; seasons limit rules to a date
-    range (e.g. winter rates only).
-  • Per-rule pool-switch options: optionally chain a workmode change, and
-    optionally reboot the miner so the new pool takes effect immediately.
-  • Manual override and pause for ad-hoc control without losing your rules.
-  • Manual control panel: workmode, soft-off, soft-on, LCD on/off, reboot.
-  • Full audit log of every command and state transition.
+  The app talks directly to each miner's CGMiner-compatible API on TCP port
+  4028 over your local network. There is no cloud, no telemetry, no account
+  to create. Your miner credentials, schedules, pool list, event log, and
+  24-hour metrics history live only on your Umbrel.
 
-  Pool-switching note
-  -------------------
-  The Avalon Q firmware applies a pool change on next reboot. The app can
-  send a reboot for you (per-rule option), but every reboot forfeits any
-  in-flight shares — keep that in mind for high-priority work.
 
-  This app does not require Bitcoin Core or any other Umbrel app.
+  WHAT IT DOES
+
+  Add miners by IP, or auto-discover them with the built-in LAN scanner.
+  The fleet sidebar shows each miner's online state, hashrate, and current
+  workmode at a glance, and the dashboard breaks out the live details:
+  workmode, hashrate, power draw, J/TH efficiency, peak chip temperature,
+  chassis temperature, fan duty, uptime, shares, and active pool.
+
+
+  CHARTS AND HISTORY
+
+  Hashrate, power draw, hashboard temperature, and workmode are sampled on
+  every poll cycle and persisted to SQLite, giving you a 24-hour history
+  view per miner. Soft-off windows, schedule-driven workmode swaps, and
+  thermal trends all show up clearly in the time-series charts.
+
+
+  POOL LIBRARY
+
+  Define your stratum pools once per miner — URL, worker, password, notes —
+  and apply them with one click. Each application can optionally include
+  an immediate reboot so the change takes effect right away (the Avalon Q
+  firmware otherwise applies pool changes on next reboot).
+
+
+  POOL-ROTATION SCHEDULER
+
+  Build rules that map a (days × time-window × season) tuple to an action.
+  Actions include switching to a specific pool, setting workmode (Eco /
+  Standard / Super), going to soft-off (standby), or waking with soft-on.
+  Time windows can wrap past midnight, seasons limit rules to a date range
+  (winter-only rates, summer load shedding, etc.), and rule priority
+  breaks ties when two windows overlap. A default action runs whenever no
+  rule matches, so the miner is never left in an undefined state.
+
+
+  MANUAL CONTROL
+
+  A dedicated control panel exposes the underlying ascset commands:
+  workmode change, soft-off, soft-on, LCD on/off, and reboot. You can also
+  pause the schedule entirely or set a timed override without losing your
+  rule definitions.
+
+
+  AUDIT LOG
+
+  Every command issued, every state transition observed, and every
+  schedule edit is recorded with a timestamp and detail payload. The
+  events tab gives you a clean reverse-chronological view, and the same
+  data is available via the API if you want to ship it elsewhere.
+
+
+  POOL-SWITCHING NOTE
+
+  The Avalon Q firmware applies a pool change on the next reboot. The app
+  can send the reboot for you (per-rule option, plus a checkbox on the
+  manual apply button), but every reboot forfeits any in-flight shares —
+  keep that in mind on high-priority work or close to a block find.
+
+
+  This app does not depend on Bitcoin Core or any other Umbrel app. Any
+  stratum pool reachable from your Umbrel will work, including pools
+  hosted by your other Umbrel apps (CKpool Solo, public pool, etc.).
+releaseNotes: >-
+  v2.0.3 — adds favicon, cache-busting on static assets so future updates
+  refresh cleanly, and packs the gallery and store icon. Also includes
+  the v2.0.2 fixes: STATE-based standby detection (UI now correctly shows
+  STANDBY during soft-off), auto-wake when transitioning out of soft-off
+  into a workmode (so schedule-end actually brings the miner back), and
+  a "How rules work" hint card on the schedule page explaining priority,
+  default action, and rule overlap behavior.
 developer: Gil Bechtel
 website: https://github.com/gbechtel-beck/avalon-q-controller
 submitter: gbechtel-beck
